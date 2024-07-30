@@ -29,7 +29,7 @@ const createExpense = (draftExpense: DraftExpense): Expense => {
 export const budgetReducer = (
   state: BudgetState = initialState,
   action: BudgetActions
-) => {
+): BudgetState => {
   if (action.type === "add-budget") {
     return {
       ...state,
@@ -55,7 +55,7 @@ export const budgetReducer = (
     const expense = createExpense(action.payload.expense);
     return {
       ...state,
-      expense: [...state.expenses, expense],
+      expenses: [...state.expenses, expense],
       modal: false,
     };
   }
