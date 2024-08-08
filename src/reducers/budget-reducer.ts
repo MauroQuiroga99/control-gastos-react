@@ -35,6 +35,7 @@ export const initialState: BudgetState = {
   modal: false,
   expenses: localStorageExpenses(),
   editingId: "",
+  currentCategory: "",
 };
 
 const createExpense = (draftExpense: DraftExpense): Expense => {
@@ -114,6 +115,12 @@ export const budgetReducer = (
       ...state,
       budget: 0,
       expenses: [],
+    };
+  }
+  if (action.type === "add-filter-category") {
+    return {
+      ...state,
+      currentCategory: action.payload.id,
     };
   }
 
